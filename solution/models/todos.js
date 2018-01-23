@@ -5,6 +5,7 @@ const Todos = {};
 Todos.allTodos = (req, res, next) => {
   db.manyOrNone('SELECT * FROM todos')
     .then(data => {
+      console.log(data);
       res.locals.todosData = data;
       next();
     })

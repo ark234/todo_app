@@ -48,6 +48,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Now add these changes and commit them.
 
+Create a new repo on github and set the local repo's origin accordingly, then push up your changes.
+
 ### Index.js
 
 ##### Require all the things
@@ -282,7 +284,7 @@ const pgp = require('pg-promise')();
 const cn = {
   host: 'localhost',
   port: 5432,
-  database: 'todo_list'
+  database: 'todos_list'
 };
 
 const db = pgp(cn);
@@ -353,3 +355,44 @@ Todos.allTodos = (req, res, next) => {
 
 module.exports = Todos;
 ```
+
+Now that we've define a model method it's time to hook it up to the controller
+
+Back in `controllers/todos.js` require the todo model
+
+```javascript
+const todos = require("../models/todos.js");
+```
+and then call the middleware model method from the route handler and add it to the response like so:
+
+```javascript
+router.get("/", Todos.allTodos, (req, res, next) => {
+  res.render("todos", { todosData: res.locals.todosData  });
+});
+```
+
+Obviously, you can go ahead and delete the hardcoded todos.
+
+And now, any TODOs that you added from the psql shell will display in the browser
+
+### Next Steps
+
+#### Create Form
+
+Now that the groundplan is set, add another route for `/todos/new` and the associated view.
+In the `new` view, write a form for creating a new TODO; it should have a title and description (since, status should always be not done for a new TODO, and the id is handled by the db).
+Add a button to the form for submitting.  Then, write a js script that will preventDefault on the form's submit event and POST a request to the server to create a new todo.
+
+Remember to add both the jquery lib and the script you wrote to the view for `/todos/new` in the view's html.  Put the js script in the `public` dir and then reference it as a relative path.  For example, if you `mkdir` a `public/js/` directory then add a `first_todo.js` script in that directory, you could simply refer to it with `src="js/first_todo.js"` in a script tag.
+
+In the success callback for the ajax POST request, display a message on the page that a new TOOD was created and remove/hide the form.
+
+Finally, add a link from the show all TODOs page to the form, and a link on the form back to the all TODOs page.
+
+### Bonus
+
+#### Make a TODO TODONE
+
+Now it's time to update our todos.  Add a "TODONE" button to each TODO in the show all TODOS page that makes a PUT request to the server that toggles the is_done flag for the TODO to `true`
+
+GOOD LUCK
