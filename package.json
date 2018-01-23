@@ -1,0 +1,22 @@
+{
+  "name": "todo_lab",
+  "version": "1.0.0",
+  "description": "#### GANBARE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.generalassemb.ly:ark234/todo_lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "mustache-express": "^1.2.5",
+    "pg-promise": "^7.4.0"
+  }
+}
