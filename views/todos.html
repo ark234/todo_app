@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todos</title>
+</head>
+<body>
+  <h3>ALL the TODOs</h3>
+  {{#todosData}}
+  <h4>{{id}}</h4>
+  <p>{{title}} --> {{description}}</p>
+  <p>is done: {{is_done}}</p>
+  {{/todosData}}
+  <a href="todos/new">New todo</a>
+</body>
+</html>

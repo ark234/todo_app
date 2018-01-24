@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/js/first_todo.js"></script>
+  <title>New todo</title>
+</head>
+<body>
+  <h1>Create a todo</h1>
+  <form action="/todos" method="post" id="new-todo-form">
+    <label for="title-input">Title:</label>
+    <input type="text" name="title" id="title-input">
+    <label for="desc-input">Description:</label>
+    <input type="text" name="description" id="desc-input">
+    <button id="submit-btn">Submit</button>
+  </form>
+  <a href="/todos">All Todos</a>
+</body>
+</html>
